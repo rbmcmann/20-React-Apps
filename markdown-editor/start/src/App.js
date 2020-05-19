@@ -18,6 +18,10 @@ export default function App() {
         className="preview"
         dangerouslySetInnerHTML={{ __html: marked(markdown) }}
       /> */}
+      {/* Keep these packages for future use:
+      https://github.com/markedjs/marked
+      https://github.com/rexxars/react-markdown
+      */}
       <ReactMarkdown className="preview" source={markdown} />
     </div>
   );
