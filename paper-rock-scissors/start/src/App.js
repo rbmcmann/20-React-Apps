@@ -1,15 +1,30 @@
-import React from 'react';
-import Rock from './icons/Rock';
-import Paper from './icons/Paper';
-import Scissors from './icons/Scissors';
-import './App.css';
+import React, { useState } from "react";
+import Rock from "./icons/Rock";
+import Paper from "./icons/Paper";
+import Scissors from "./icons/Scissors";
+import "./App.css";
+
+const choices = [
+  { id: 1, name: "rock", component: Rock },
+  { id: 2, name: "paper", component: Paper },
+  { id: 3, name: "scissors", component: Scissors },
+];
 
 export default function App() {
+  const [userChoice, setUserChoice] = useState(null);
+  const [computerChoice, setComputerChoice] = useState(null);
+
+  function handleUserChoice(choice) {
+    const chosenChoice = choices.find((c) => c.id === choice);
+    setUserChoice(chosenChoice);
+  }
+
   return (
     <div className="app">
       {/* information goes here */}
       <div className="info">
         <h2>Rock. Paper. Scissors</h2>
+        {/* this is where I started from before */}
 
         {/* wins vs losses stats */}
         <div className="wins-losses">
@@ -36,13 +51,13 @@ export default function App() {
 
         {/* buttons for my choice */}
         <div>
-          <button className="rock">
+          <button className="rock" onClick={() => handleUserChoice(1)}>
             <Rock />
           </button>
-          <button className="paper">
+          <button className="paper" onClick={() => handleUserChoice(2)}>
             <Paper />
           </button>
-          <button className="scissors">
+          <button className="scissors" onClick={() => handleUserChoice(3)}>
             <Scissors />
           </button>
         </div>
